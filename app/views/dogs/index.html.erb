@@ -1,1 +1,17 @@
-<h1>Dogs index</h1>
+<div class="row">
+  <div class="col-3">
+    <%= form_with url: dogs_fetch_breed_image_path, data: { turbo_frame: "breed_frame" }, class: 'form-inline' do %>
+      <div>
+        <%= label_tag :breed, 'Breed:' %>
+        <%= text_field_tag :breed, nil, required: true %>
+        <%= submit_tag 'Submit' %>
+      </div>
+    <% end %>
+  </div>
+  <div class="col">
+    <%= turbo_frame_tag "breed_frame" do %>
+      <h2 id="breed-name"></h2>
+      <img id="breed-image" src="" alt="Dog breed image" style="display: none;">
+    <% end %>
+  </div>
+</div>

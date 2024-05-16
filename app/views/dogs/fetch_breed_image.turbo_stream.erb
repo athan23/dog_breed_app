@@ -1,0 +1,12 @@
+<% if @image_url %>
+  <%= turbo_stream.update "breed_frame" do %>
+    <h2>Breed: <%= @breed %></h2>
+    <img id="breed-image" src="<%= @image_url %>" alt="Dog breed image" style="display: block;">
+  <% end %>
+<% else %>
+  <%= turbo_stream.update "breed_frame" do %>
+    <h2>Breed: <%= @breed %></h2>
+    <p>Error fetching image for breed: <%= @breed %></p>
+    <img id="breed-image" src="" alt="Dog breed image" style="display: none;">
+  <% end %>
+<% end %>

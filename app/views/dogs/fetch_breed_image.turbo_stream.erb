@@ -1,7 +1,7 @@
 <% if @image_url %>
   <%= turbo_stream.update "breed_frame" do %>
     <h2>Breed: <%= @breed.titleize %></h2>
-    <img id="breed-image" src="<%= @image_url %>" alt="Dog breed image" style="display: block;">
+    <img id="breed-image" src="<%= @image_url %>" alt="Dog breed image" class="img-fluid">
   <% end %>
 <% else %>
   <%= turbo_stream.update "breed_frame" do %>

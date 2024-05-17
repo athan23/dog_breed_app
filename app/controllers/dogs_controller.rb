@@ -3,19 +3,16 @@ class DogsController < ApplicationController
   end
 
   def fetch_breed_image
-    breed = params[:breed]
+    breed = helpers.format_breed_name(params[:breed])
     result = DogApi.call(breed)
 
     if result["status"] == "success"
       @image_url = result["message"]
-      @breed = breed
+      @breed = params[:breed]
     else
       @image_url = nil
-      @breed = breed
+      @breed = params[:breed]
     end
-
-    puts @image_url
-    puts @breed
 
     respond_to do |format|
       format.turbo_stream

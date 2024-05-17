@@ -5,7 +5,7 @@
   <% end %>
 <% else %>
   <%= turbo_stream.update "breed_frame" do %>
-    <h2>Breed: <%= @breed %></h2>
+    <h2>Breed: <%= @breed.titleize %></h2>
     <p>Error fetching image for breed: <%= @breed %></p>
     <img id="breed-image" src="" alt="Dog breed image" style="display: none;">
   <% end %>

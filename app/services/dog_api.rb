@@ -9,15 +9,17 @@ class DogApi < ApplicationService
   end
 
   def call
+    fetch_breed_image
+  end
+
+  private
+
+  def fetch_breed_image
     url = URI("#{DOG_API_BASE_URL}/breed/#{@breed.downcase}/images/random")
     response = Net::HTTP.get(url)
     result = JSON.parse(response)
-
-    puts result
     result
   rescue StandardError => e
-    puts "error"
-    puts e.message
     { 'status' => 'error', 'message' => e.message }
   end
 end
